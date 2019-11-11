@@ -1,6 +1,7 @@
 package laboratornuerobotu;
 
 public class Laba1Taxi {
+	
 	public static int Rashod(int z, int y) {
 		int rashodNa100Kilometrov = z * y;
 		return rashodNa100Kilometrov;
