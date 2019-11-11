@@ -1,43 +1,48 @@
 package laboratornuerobotu;
 
 public class Laba1Taxi {
+	public static int Rashod(int z, int y) {
+		int rashodNa100Kilometrov = z * y;
+		return rashodNa100Kilometrov;
+		
+	}
 
 	public static void main(String[] args) {
-		Cars taxi1 = new Cars();
-		taxi1.setMark("BMW");
-		taxi1.setWeight(1500);
-		taxi1.setCost(230000);
-		taxi1.setCostOfRide(15);
-		Cars taxi2 = new Cars();
-		taxi2.setMark("Renault");
-		taxi2.setWeight(2500);
-		taxi2.setCost(150000);
-		taxi2.setCostOfRide(10);
-		Cars taxi3 = new Cars();
-		taxi3.setMark("Opel");
-		taxi3.setWeight(1000);
-		taxi3.setCost(200000);
-		taxi3.setCostOfRide(13);
-		Cars taxi4 = new Cars();
-		taxi4.setMark("Subaru");
-		taxi4.setWeight(2000);
-		taxi4.setCost(280000);
-		taxi4.setCostOfRide(20);
-		System.out.println("Марка - " +taxi1.getMark() + " Вес автомобиля - " +taxi1.getWeight() + " Количество колёс - " +taxi1.getNumOfWheels() + " Цена автомобиля - " +taxi1.getCost() + " ЦенаПоездкиЗа1км - " +taxi1.getCostOfRide() );
-		System.out.println("Марка - " +taxi2.getMark() + " Вес автомобиля - " +taxi2.getWeight() + " Количество колёс - " +taxi2.getNumOfWheels() + " Цена автомобиля - " +taxi2.getCost() + " ЦенаПоездкиЗа1км - " +taxi2.getCostOfRide() );
-		System.out.println("Марка - " +taxi3.getMark() + " Вес автомобиля - " +taxi3.getWeight() + " Количество колёс - " +taxi3.getNumOfWheels() + " Цена автомобиля - " +taxi3.getCost() + " ЦенаПоездкиЗа1км - " +taxi3.getCostOfRide() );
-		System.out.println("Марка - " +taxi4.getMark() + " Вес автомобиля - " +taxi4.getWeight() + " Количество колёс - " +taxi4.getNumOfWheels() + " Цена автомобиля - " +taxi4.getCost() + " ЦенаПоездкиЗа1км - " +taxi4.getCostOfRide() );
-
+		CarCharacteristic [] taxi = new CarCharacteristic[5];
+		taxi[0] = new CarCharacteristic("BMW", 1500, 230000, 15);
+		taxi[1] = new CarCharacteristic("Renault",2500,150000,10);
+		taxi[2] = new CarCharacteristic("Opel",1000,200000,13);
+		taxi[3] = new CarCharacteristic("Subaru",2000,280000,20);
+		taxi[4] = new CarCharacteristic("BMW", 1500, 230000, 15);	
+		for (CarCharacteristic taxis:taxi) {
+			System.out.println(taxis);
+		}
+		int c = Rashod(CarCharacteristic.getCostOfPetrol(), 100);
+		System.out.println("Расход топлива на 100 км = " + c + "грн");
 	}
 
 }
-class Cars{
+class CarCharacteristic{
 	private String mark;
 	private int weight;
 	private int cost;
 	private int costOfRide;
-	private static int numOfWheels = 4;
+	private static int costOfPetrol = 36;
 	
+	public CarCharacteristic(String m, int w, int c) {
+		this.mark = m;
+		this.weight = w;
+		this.cost = c;
+	}
+	public CarCharacteristic(String m, int w, int c, int co) {
+		this(m, w, c);
+		this.costOfRide = co;
+	}
+	@Override
+	public String toString() {
+		return "CarCharacteristic [mark=" + mark + ", weight=" + weight + ", cost=" + cost + ", costOfRide="
+				+ costOfRide + "]";
+	}
 	public void setMark(String carMark) {
 		mark = carMark;
 	}
@@ -56,16 +61,16 @@ class Cars{
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
-	public static int getNumOfWheels() {
-		return numOfWheels;
-	}
-	public static void setNumOfWheels(int numOfWheels) {
-		Cars.numOfWheels = numOfWheels;
-	}
 	public int getCostOfRide() {
 		return costOfRide;
 	}
 	public void setCostOfRide(int costOfRide) {
 		this.costOfRide = costOfRide;
+	}
+	public static int getCostOfPetrol() {
+		return costOfPetrol;
+	}
+	public static void setCostOfPetrol(int costOfPetrol) {
+		CarCharacteristic.costOfPetrol = costOfPetrol;
 	}
 }
